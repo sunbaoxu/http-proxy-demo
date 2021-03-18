@@ -3,7 +3,6 @@ import {host} from './baseUrl'
 axios.defaults.timeout = 30000;                        //响应时间
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 
-
 //请求拦截
 axios.interceptors.request.use((config) => {
 
