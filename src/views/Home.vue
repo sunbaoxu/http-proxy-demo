@@ -1,18 +1,37 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button class="btn" @click="getAFn">post跨域请求</button>
+    <button class="btn" @click="getBFn">get跨域请求</button>
+
+    <ul>
+      <li>请求状态：{{obj.message}} </li>
+      <li>返回值 ：{{obj.data}}</li>
+    </ul>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import api from '$api'
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  data (){
+    return {
+      obj :{}
+    }
+  },
+  methods :{
+    //post 请求
+    getAFn (){
+      api.getAFn().then((e)=>{
+          this.obj = e
+      })
+    },
+    //get 请求
+    getBFn (){
+      api.getBFn().then((e)=>{
+        this.obj = e
+      })
+    }
   }
 }
 </script>
